@@ -1,3 +1,5 @@
-<div>
-    MovieCard
+<div class="movie-card">
+    <img [src]="movieItem?.cover" alt="oops" class="fit-img">
+    <h4>{{movieItem?.title || ''}}</h4>
+    <p>{{movieItem?.year || ''}}</p>
 </div>

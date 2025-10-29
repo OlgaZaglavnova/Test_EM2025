@@ -1,0 +1,33 @@
+@import '../../../styles/variables';
+
+:host {
+    width: 100%;
+    .movies_header {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: baseline;
+        &-input {
+            background-color: $block-background;
+            border: none;
+            padding: 5px;
+            border-radius: $border-radius;
+        }
+    }
+    .movies_grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax($card-width, 1fr));
+        grid-gap: 1rem;
+    }
+
+     @media screen and (max-width: 550px) {
+        .movies_header {
+            flex-direction: column;
+            padding-bottom: 20px;
+        }
+        .movies_grid {
+            grid-template-columns: repeat(1fr);
+        }
+     }
+}

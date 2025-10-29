@@ -11,10 +11,12 @@ export class MoviesService {
   private apiService = inject(ApiService);
   private _moviesListS = signal<Movie[]>([]);
   private _loadingS = signal<boolean>(false);
+  private _filteredMoviesListS = signal<Movie[]>([]);
 
 // for sharing
   readonly moviesListS = this._moviesListS.asReadonly();
   readonly loadingS = this._loadingS.asReadonly();
+  readonly filteredMoviesListS = this._filteredMoviesListS.asReadonly();
 
   private _filterTitleS = signal<string>('');
 
@@ -34,7 +36,9 @@ export class MoviesService {
         return EMPTY;
       }),
       tap((moviesDTO) => {
+        this._filterTitleS.set('');
         this._moviesListS.set(moviesDTO);
+        this._filteredMoviesListS.set(moviesDTO);
         // this.loadingS.set(false);
       }),
       finalize(() => {
@@ -45,5 +49,6 @@ export class MoviesService {
 
   setFilter(filter: string): void {
     this._filterTitleS.set(filter);
+    this._filteredMoviesListS.set(this._moviesListS().filter((elem) => elem.title.includes(filter)))
   }
 }

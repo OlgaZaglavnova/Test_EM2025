@@ -1,8 +1,17 @@
 <div>
-    <h1>Каталог фильмов</h1>
-    @for (movie of moviesService.moviesListS(); track movie.id) {
-        <p>
-            {{movie.title}}
-        </p>
-    }
+    <div class="movies_header">
+        <h1>Каталог фильмов</h1>
+        <input
+            type="text"
+            placeholder="Поиск фильмов..."
+            class="movies_header-input"
+            (input)="onInputChange($any($event.target).value)"
+        >
+    </div>
+    
+    <div class="movies_grid">
+        @for (movie of moviesService.filteredMoviesListS(); track movie.id) {
+            <app-movie-card [movie]="movie"></app-movie-card>
+        }
+    </div>
 </div>

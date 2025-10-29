@@ -1,13 +1,12 @@
-import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 
-import { ApiService } from '../../services/api.service';
-import { Movie } from '../../interfaces/interfaces';
 import { MoviesService } from '../../services/movies.service';
+import { MovieCard } from '../movie-card/movie-card';
 
 @Component({
   selector: 'app-movies',
-  imports: [],
+  imports: [MovieCard],
   templateUrl: './movies.html',
   styleUrl: './movies.scss'
 })
@@ -26,6 +25,10 @@ export class Movies implements OnInit, OnDestroy {
     .subscribe((moviesList) => {
       console.log('LOADED: ', moviesList)
     });
+  }
+
+  onInputChange(val: string): void {
+    this.moviesService.setFilter(val);
   }
 
   ngOnDestroy(): void {
