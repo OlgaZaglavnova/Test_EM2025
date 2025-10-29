@@ -1,5 +1,6 @@
 <div>
-    @for (movie of moviesList(); track movie.id) {
+    <h1>Каталог фильмов</h1>
+    @for (movie of moviesService.moviesListS(); track movie.id) {
         <p>
             {{movie.title}}
         </p>

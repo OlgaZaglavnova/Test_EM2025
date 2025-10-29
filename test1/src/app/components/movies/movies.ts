@@ -1,22 +1,18 @@
 import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
-import { ApiService } from '../../services/api.service';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Movie } from '../../interfaces/interfaces';
 import { Subject, takeUntil } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+import { ApiService } from '../../services/api.service';
+import { Movie } from '../../interfaces/interfaces';
+import { MoviesService } from '../../services/movies.service';
 
 @Component({
   selector: 'app-movies',
-  imports: [CommonModule, FormsModule],
+  imports: [],
   templateUrl: './movies.html',
   styleUrl: './movies.scss'
 })
 export class Movies implements OnInit, OnDestroy {
-  private apiService = inject(ApiService);
-
-  moviesList = signal<Movie[]>([]);
-  loading = signal<boolean>(false);
+  moviesService = inject(MoviesService);
 
   destroy$ = new Subject();
 
@@ -25,18 +21,10 @@ export class Movies implements OnInit, OnDestroy {
   }
 
   loadMovies(): void {
-    this.loading.set(true);
-    this.apiService.getFilms()
+    this.moviesService.loadMovies$()
     .pipe(takeUntil(this.destroy$))
-    .subscribe({
-      next: (moviesDTO) => {
-        this.moviesList.set(moviesDTO);
-        console.log('MOVS: ', moviesDTO)
-      },
-      error: (err) => {
-        console.error('Ошибка загрузки:', err);
-        this.loading.set(false);
-      }
+    .subscribe((moviesList) => {
+      console.log('LOADED: ', moviesList)
     });
   }
 
