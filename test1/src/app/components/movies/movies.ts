@@ -3,10 +3,12 @@ import { Subject, takeUntil } from 'rxjs';
 
 import { MoviesService } from '../../services/movies.service';
 import { MovieCard } from '../movie-card/movie-card';
+import { Movie } from 'src/app/interfaces/interfaces';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-movies',
-  imports: [MovieCard],
+  imports: [MovieCard, MatProgressSpinnerModule],
   templateUrl: './movies.html',
   styleUrl: './movies.scss'
 })
@@ -29,6 +31,10 @@ export class Movies implements OnInit, OnDestroy {
 
   onInputChange(val: string): void {
     this.moviesService.setFilter(val);
+  }
+
+  showMovieDetails(movie: Movie): void {
+    console.log('CLICKED: ', movie)
   }
 
   ngOnDestroy(): void {

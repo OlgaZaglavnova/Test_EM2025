@@ -1,5 +1,5 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { catchError, EMPTY, finalize, map, Observable, tap } from 'rxjs';
+import { catchError, EMPTY, Observable, tap } from 'rxjs';
 
 import { Movie } from '../interfaces/interfaces';
 import { ApiService } from './api.service';
@@ -32,23 +32,25 @@ export class MoviesService {
     .pipe(
       catchError((err) => {
         console.error('Ошибка загрузки:', err);
-        // this.loadingS.set(false);
+        this._loadingS.set(false);
         return EMPTY;
       }),
       tap((moviesDTO) => {
-        this._filterTitleS.set('');
-        this._moviesListS.set(moviesDTO);
-        this._filteredMoviesListS.set(moviesDTO);
-        // this.loadingS.set(false);
+        setTimeout(() => {
+          this._filterTitleS.set('');
+          this._moviesListS.set(moviesDTO);
+          this._filteredMoviesListS.set(moviesDTO);
+          this._loadingS.set(false);
+        }, 1000);
       }),
-      finalize(() => {
-        this._loadingS.set(false);
-      })
     );
   }
 
   setFilter(filter: string): void {
     this._filterTitleS.set(filter);
-    this._filteredMoviesListS.set(this._moviesListS().filter((elem) => elem.title.includes(filter)))
+    this._filteredMoviesListS.set(
+      this._moviesListS().filter((elem) => 
+        elem.title.toLowerCase().includes(filter.toLowerCase()))
+    );
   }
 }

@@ -2,24 +2,46 @@
 
 :host {
     width: 100%;
-    .movies_header {
+    height: 100vh;
+    .movies {
+        height: 100%;
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: baseline;
-        &-input {
-            background-color: $block-background;
-            border: none;
-            padding: 5px;
-            border-radius: $border-radius;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        &_header {
+            flex-grow: 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 0 5px 0 5px;
+            &-input {
+                background-color: $block-background;
+                border: none;
+                padding: 5px;
+                border-radius: $border-radius;
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+
+        &_grid {
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax($card-width, 1fr));
+            grid-gap: 1rem;
+        }
+
+        &_loading {
+            flex-grow: 1;
+            justify-items: center;
+            padding-top: 50px;
         }
     }
-    .movies_grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax($card-width, 1fr));
-        grid-gap: 1rem;
-    }
+    
 
      @media screen and (max-width: 550px) {
         .movies_header {
