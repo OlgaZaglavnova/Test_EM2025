@@ -15,10 +15,12 @@ export class MoviesService {
   private _loadingS = signal<boolean>(false);
   private _filteredMoviesListS = signal<Movie[]>([]);  
   private _filterTitleS = signal<string>('');
+  private _selectedMovie = signal<Movie | null>(null);
 
 // for sharing
   readonly loadingS = this._loadingS.asReadonly();
   readonly filteredMoviesListS = this._filteredMoviesListS.asReadonly();
+  readonly selectedMovieS = this._selectedMovie.asReadonly();
 
   setFilter(filter: string): void {
     this._filterTitleS.set(filter);
@@ -51,6 +53,11 @@ export class MoviesService {
         }),
       );
     
+  }
+
+  setSelectedMovie(selected: Movie | null): void {
+    console.log('SRV', selected)
+    this._selectedMovie.set(selected);
   }
 
 }

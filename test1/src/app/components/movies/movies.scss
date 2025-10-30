@@ -31,7 +31,7 @@
         &_grid {
             flex-grow: 1;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax($card-width, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(calc($card-height + 120px), 1fr));
             grid-gap: 1rem;
         }
 

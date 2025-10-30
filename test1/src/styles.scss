@@ -48,3 +48,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     container-color: red,
   ));
 }
+
+.mat-mdc-dialog-surface {
+    border-radius: 5px !important;
+    padding: 20px;
+}

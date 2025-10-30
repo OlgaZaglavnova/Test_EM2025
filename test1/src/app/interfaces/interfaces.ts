@@ -1,3 +1,5 @@
+import { MoviesService } from "../services/movies.service";
+
 export interface Movie {
     id: string;
     title: string;
@@ -7,4 +9,8 @@ export interface Movie {
     content: string;
     rating: string;
     cover: string;
+}
+
+export interface DialogData {
+    mservice: MoviesService
 }
