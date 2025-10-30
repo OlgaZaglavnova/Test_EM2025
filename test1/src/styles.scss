@@ -43,4 +43,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   @include mat.progress-spinner-overrides((
     active-indicator-color: lightgrey,
   ));
+
+  @include mat.snack-bar-overrides((
+    container-color: red,
+  ));
 }

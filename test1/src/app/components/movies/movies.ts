@@ -18,19 +18,18 @@ export class Movies implements OnInit, OnDestroy {
   destroy$ = new Subject();
 
   ngOnInit(): void {
-    this.loadMovies();
+    this.loadMovies('');
   }
 
-  loadMovies(): void {
-    this.moviesService.loadMovies$()
-    .pipe(takeUntil(this.destroy$))
-    .subscribe((moviesList) => {
-      console.log('LOADED: ', moviesList)
-    });
+  loadMovies(filter: string): void {
+    this.moviesService.setFilter(filter);
+    this.moviesService.loadMoviesByFilter$().pipe(
+      takeUntil(this.destroy$),
+    ).subscribe();
   }
 
   onInputChange(val: string): void {
-    this.moviesService.setFilter(val);
+    this.loadMovies(val);
   }
 
   showMovieDetails(movie: Movie): void {

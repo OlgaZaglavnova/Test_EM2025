@@ -10,11 +10,15 @@
     </div>
     
     @if (!moviesService.loadingS()) {
+        @if (moviesService.filteredMoviesListS().length > 0) {
         <div class="movies_grid">
             @for (movie of moviesService.filteredMoviesListS(); track movie.id) {
                 <app-movie-card [movie]="movie" (click)="showMovieDetails(movie)"></app-movie-card>
             }
         </div>
+        } @else {
+           <p>Фильмы не найдены</p>
+        }
     } @else {
         <div class="movies_loading">
             <mat-spinner diameter="50"></mat-spinner>
