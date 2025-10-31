@@ -1,12 +1,26 @@
 <div class="movies">
     <div class="movies-header">
         <h1>Каталог фильмов</h1>
-        <input
-            type="text"
-            placeholder="Поиск фильмов..."
-            class="movies_header-input"
-            (input)="onInputChange($any($event.target).value)"
-        >
+        <div class="movies-header-input-container">
+            <input
+                type="text"
+                placeholder="Поиск фильмов..."
+                class="movies-header-input"
+                [(ngModel)] = 'filterValue'
+                (input)="onInputChange($any($event.target).value)"
+            >
+            @if(showClearButton()) {
+                <button
+                    (click)="clearInput()"
+                    type="button"
+                    class="movies-header-input-clear"
+                    aria-label="Очистить поле"
+                >
+                    ×
+                </button>
+            }
+            
+        </div>
     </div>
 
     <div class="movies-grid-container">

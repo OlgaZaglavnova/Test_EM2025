@@ -24,6 +24,28 @@
                 border-radius: $border-radius;
                 &:focus {
                     outline: none;
+                } 
+                &-container {
+                    position: relative;
+                }
+                &-clear {
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: none;
+                    border: none;
+                    font-size: 20px;
+                    color: #6c757d;
+                    cursor: pointer;
+                    padding: 4px;
+                    border-radius: 50%;
+                    width: 24px;
+                    height: 24px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 0.2s ease;
                 }
             }
         }
