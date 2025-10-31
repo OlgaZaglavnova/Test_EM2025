@@ -5,7 +5,11 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterModule, CommonModule, FormsModule ],
+  imports: [
+    RouterOutlet, 
+    RouterModule, 
+    CommonModule, 
+    FormsModule ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

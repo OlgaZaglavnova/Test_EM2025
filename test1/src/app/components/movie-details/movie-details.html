@@ -5,9 +5,33 @@
 
     <div class="details-content">
         <h2>{{selectedMovie?.title}} ({{selectedMovie?.year}} год)</h2>
-        <img [src]="selectedMovie?.cover" alt="oops" class="details-img">
+        <div (click)="toggleCover()" class="details-cover">
+            <div [@flip]="isFrontCover() ? 'front' : 'back'" class="details-cover-flip">
+                <div class="cover front">
+                    <img [src]="selectedMovie?.cover" alt="oops" class="details-img">
+                </div>
+                <div class="cover back">
+                   <div class="back-list">
+                        Актеры:
+                        @for (actor of selectedMovie?.actors; track actor) {
+                            <p>{{actor}}</p>
+                        }
+                    </div> 
+                </div>
+            </div>
+            <!-- @if (isFrontCover()) {
+                <img [src]="selectedMovie?.cover" alt="oops" class="details-img">
+            } @else {
+                <div>
+                    Актеры:
+                    @for (actor of selectedMovie?.actors; track actor) {
+                        <p>{{actor}}</p>
+                    }
+                </div>
+            } -->
+        </div>
         <p class="details-genre">{{selectedMovie?.genre}}</p>
         <p class="details-text">{{selectedMovie?.content}}</p>
-        <div class="details-rating">{{selectedMovie?.rating}}</div>
+        <h4 class="details-rating">{{selectedMovie?.rating}}</h4>
     </div>
 </div>

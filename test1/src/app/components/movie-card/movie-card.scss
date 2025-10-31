@@ -3,6 +3,7 @@
 
 :host{
     justify-items: center;
+    cursor: pointer;
     .movie-card {
         width: 90%;
         height: $card-height;
