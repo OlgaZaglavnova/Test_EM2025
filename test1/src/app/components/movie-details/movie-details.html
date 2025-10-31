@@ -15,7 +15,7 @@
                         <div>Актеры:</div>
                         @for (actor of selectedMovie?.actors; track actor) {
                             <div class="details-img-container">
-                                <img [src]="actor?.picture" alt="oops" class="details-img details-img-small">
+                                <app-safe-img [src]="actor?.picture ?? defaultActorImg" [fallback]="defaultActorImg" alt="oops" class="details-img details-img-small"></app-safe-img>
                                 <p>{{actor?.actorName}} -  {{actor?.roleName}}</p>
                             </div>
                         }
