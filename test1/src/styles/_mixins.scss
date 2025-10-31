@@ -1,0 +1,23 @@
+@import './variables';
+
+@mixin cover-image($marginB: 10px) {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        margin-bottom: $marginB;
+        border-radius: $border-radius;
+}
+
+@mixin chip() {
+    background-color: $block-background;
+    width: fit-content;
+    padding: 0 10px;
+    border-radius: $border-radius;
+}
+
+@mixin long-text() {
+    padding: 5px;
+    max-height: 200px;
+    overflow: auto;
+    text-align: justify;
+}

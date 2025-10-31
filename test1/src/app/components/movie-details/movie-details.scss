@@ -1,3 +1,5 @@
+@import '../../../styles/mixins';
+
 :host {
     .details {
         &-close-btn {
@@ -5,6 +7,24 @@
             top: 5px;
             right: 5px;
             cursor: pointer;
+        }
+
+        &-img {
+            @include cover-image;
+        }
+
+        &-genre {
+            @include chip;
+        }
+
+        &-rating {
+            @include chip;
+            justify-self: flex-end;
+            margin-right: 5px;
+        }
+
+        &-text {
+            @include long-text;
         }
     }
 

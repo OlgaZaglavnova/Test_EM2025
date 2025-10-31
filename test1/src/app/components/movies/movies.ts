@@ -40,7 +40,7 @@ export class Movies implements OnInit, OnDestroy {
     this.moviesService.setSelectedMovie(movie);
     this.dialog.open(MovieDetails, {
       width: '70vw',
-      height: '70vh',
+      minHeight: '70vh',
       enterAnimationDuration: '1000ms',
       exitAnimationDuration: '500ms',
       panelClass: 'movie-details-dialog',

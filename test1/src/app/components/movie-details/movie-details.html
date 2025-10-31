@@ -3,7 +3,11 @@
         <mat-icon>close</mat-icon>
     </div>
 
-    <div>
-        <h2>{{selectedMovie?.title}}</h2>
+    <div class="details-content">
+        <h2>{{selectedMovie?.title}} ({{selectedMovie?.year}} год)</h2>
+        <img [src]="selectedMovie?.cover" alt="oops" class="details-img">
+        <p class="details-genre">{{selectedMovie?.genre}}</p>
+        <p class="details-text">{{selectedMovie?.content}}</p>
+        <div class="details-rating">{{selectedMovie?.rating}}</div>
     </div>
 </div>
