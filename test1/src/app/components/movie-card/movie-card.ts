@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Movie } from '../../interfaces/interfaces';
 import { CommonModule } from '@angular/common';
 import { SafeImgComponent } from 'src/app/shared/safe-img/safe-img';
-import { defaultMovieCover } from 'src/app/shared/safe-img/constants';
+import { defaultMovieCover } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-movie-card',

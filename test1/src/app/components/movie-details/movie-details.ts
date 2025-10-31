@@ -5,7 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 
 import { DialogData } from 'src/app/interfaces/interfaces';
-import { defaultActorImg, defaultMovieCover } from 'src/app/shared/safe-img/constants';
+import { defaultActorImg, defaultMovieCover } from 'src/app/shared/constants';
 import { SafeImgComponent } from 'src/app/shared/safe-img/safe-img';
 
 @Component({

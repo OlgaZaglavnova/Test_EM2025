@@ -4,7 +4,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Movie } from '../interfaces/interfaces';
 import { ApiService } from './api.service';
-import { toObservable } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root'
@@ -60,7 +59,6 @@ export class MoviesService {
   }
 
   setSelectedMovie(selected: Movie | null): void {
-    console.log('SRV', selected)
     this._selectedMovie.set(selected);
   }
 
