@@ -8,7 +8,7 @@
         <div (click)="toggleCover()" class="details-cover">
             <div [@flip]="isFrontCover() ? 'front' : 'back'" class="details-cover-flip">
                 <div class="cover front">
-                    <img [src]="selectedMovie?.cover" alt="oops" class="details-img">
+                    <app-safe-img [src]="selectedMovie?.cover ?? defaultMovieCover" alt="oops" class="fit-img"></app-safe-img>
                 </div>
                 <div class="cover back">
                    <div class="back-list">

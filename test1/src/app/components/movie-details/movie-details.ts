@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+
 import { DialogData } from 'src/app/interfaces/interfaces';
+import { defaultMovieCover } from 'src/app/shared/safe-img/constants';
+import { SafeImgComponent } from 'src/app/shared/safe-img/safe-img';
 
 @Component({
   selector: 'app-movie-details',
-  imports: [MatIconModule, CommonModule ],
+  imports: [MatIconModule, CommonModule, SafeImgComponent ],
   templateUrl: './movie-details.html',
   styleUrl: './movie-details.scss',
   animations: [
@@ -25,6 +28,8 @@ import { DialogData } from 'src/app/interfaces/interfaces';
   ]
 })
 export class MovieDetails{
+  defaultMovieCover = defaultMovieCover;
+
   isFrontCover = signal(true);
 
   readonly data = inject<DialogData>(MAT_DIALOG_DATA);

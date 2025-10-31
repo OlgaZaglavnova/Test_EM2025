@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Movie } from '../../interfaces/interfaces';
 import { CommonModule } from '@angular/common';
 import { SafeImgComponent } from 'src/app/shared/safe-img/safe-img';
+import { defaultMovieCover } from 'src/app/shared/safe-img/constants';
 
 @Component({
   selector: 'app-movie-card',
@@ -12,5 +13,5 @@ import { SafeImgComponent } from 'src/app/shared/safe-img/safe-img';
 export class MovieCard {
   @Input('movie') movieItem: Movie | undefined = undefined;
 
-  defaultMovieCover = '/assets/images/defaultMovie.webp';
+  defaultMovieCover = defaultMovieCover;
 }

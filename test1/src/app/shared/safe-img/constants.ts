@@ -1,0 +1,1 @@
+export const defaultMovieCover = '/assets/images/defaultMovie.webp';
