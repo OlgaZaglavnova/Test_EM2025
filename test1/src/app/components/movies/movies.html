@@ -1,5 +1,5 @@
 <div class="movies">
-    <div class="movies_header">
+    <div class="movies-header">
         <h1>Каталог фильмов</h1>
         <input
             type="text"
@@ -8,20 +8,23 @@
             (input)="onInputChange($any($event.target).value)"
         >
     </div>
-    
-    @if (!moviesService.loadingS()) {
-        @if (moviesService.filteredMoviesListS().length > 0) {
-        <div class="movies_grid">
-            @for (movie of moviesService.filteredMoviesListS(); track movie.id) {
-                <app-movie-card [movie]="movie" (click)="showMovieDetails(movie)"></app-movie-card>
+
+    <div class="movies-grid-container">
+        @if (!moviesService.loadingS()) {
+            @if (moviesService.filteredMoviesListS().length > 0) {
+            <div class="movies-grid">
+                @for (movie of moviesService.filteredMoviesListS(); track movie.id) {
+                    <app-movie-card [movie]="movie" (click)="showMovieDetails(movie)"></app-movie-card>
+                }
+            </div>
+            } @else {
+            <p>Фильмы не найдены</p>
             }
-        </div>
         } @else {
-           <p>Фильмы не найдены</p>
+            <div class="movies-loading">
+                <mat-spinner diameter="50"></mat-spinner>
+            </div>
         }
-    } @else {
-        <div class="movies_loading">
-            <mat-spinner diameter="50"></mat-spinner>
-        </div>
-    }
+    </div>
+    
 </div>
