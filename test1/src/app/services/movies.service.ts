@@ -26,6 +26,10 @@ export class MoviesService {
     this._filterTitleS.set(filter);
   }
 
+  setLoading(isLoading: boolean): void {
+    this._loadingS.set(isLoading);
+  }
+
   loadMoviesByFilter$(): Observable<Movie[]> {
     this._loadingS.set(true);
     return this.apiService.getMoviesByTitle(this._filterTitleS())

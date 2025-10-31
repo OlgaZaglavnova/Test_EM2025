@@ -1,5 +1,5 @@
 import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { debounceTime, distinctUntilChanged, Subject, takeUntil, tap } from 'rxjs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -7,16 +7,16 @@ import { MoviesService } from '../../services/movies.service';
 import { MovieCard } from '../movie-card/movie-card';
 import { Movie } from 'src/app/interfaces/interfaces';
 import { MovieDetails } from '../movie-details/movie-details';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-movies',
-  imports: [FormsModule, MovieCard, MovieDetails, MatProgressSpinnerModule],
+  imports: [FormsModule, ReactiveFormsModule, MovieCard, MovieDetails, MatProgressSpinnerModule],
   templateUrl: './movies.html',
   styleUrl: './movies.scss'
 })
 export class Movies implements OnInit, OnDestroy {
-  filterValue = '';
+  filterControl = new FormControl('');
   
   moviesService = inject(MoviesService);
   readonly dialog = inject(MatDialog);
@@ -26,7 +26,18 @@ export class Movies implements OnInit, OnDestroy {
   destroy$ = new Subject();
 
   ngOnInit(): void {
-    this.loadMovies('');
+    this.filterControl.valueChanges.pipe(
+      tap(() => {
+        this.moviesService.setLoading(true);
+      }),
+      takeUntil(this.destroy$),
+      debounceTime(1000),
+      distinctUntilChanged(),
+      tap(value => {
+        this.loadMovies(value ?? '');
+      })
+    ).subscribe();
+    this.filterControl.setValue('');// вызовем загрузку - изменим значение
   }
 
   loadMovies(filter: string): void {
@@ -39,10 +50,6 @@ export class Movies implements OnInit, OnDestroy {
     this.moviesService.loadMoviesByFilter$().pipe(
       takeUntil(this.destroy$),
     ).subscribe();
-  }
-
-  onInputChange(val: string): void {
-    this.loadMovies(val);
   }
 
   showMovieDetails(movie: Movie): void {
@@ -59,8 +66,7 @@ export class Movies implements OnInit, OnDestroy {
   }
 
   clearInput(): void {
-    this.filterValue = '';
-    this.loadMovies('');
+    this.filterControl.setValue('');
   }
 
   ngOnDestroy(): void {

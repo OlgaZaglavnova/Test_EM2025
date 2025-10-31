@@ -6,8 +6,7 @@
                 type="text"
                 placeholder="Поиск фильмов..."
                 class="movies-header-input"
-                [(ngModel)] = 'filterValue'
-                (input)="onInputChange($any($event.target).value)"
+                [formControl]="filterControl"
             >
             @if(showClearButton()) {
                 <button
