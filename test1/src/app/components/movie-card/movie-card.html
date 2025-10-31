@@ -1,5 +1,5 @@
 <div class="movie-card">
-    <img [src]="movieItem?.cover" alt="oops" class="fit-img">
+    <app-safe-img [src]="movieItem?.cover ?? defaultMovieCover" alt="oops" class="fit-img"></app-safe-img>
     <h4>{{movieItem?.title || ''}}</h4>
     <p>{{movieItem?.year || ''}}</p>
 </div>

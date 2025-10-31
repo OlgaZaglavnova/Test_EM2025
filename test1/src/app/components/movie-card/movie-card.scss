@@ -14,5 +14,6 @@
 
     .fit-img {
         @include cover-image;
+        margin-bottom: 20px;
     }
 }
