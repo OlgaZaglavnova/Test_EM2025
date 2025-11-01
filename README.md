@@ -6,7 +6,9 @@
 
 Для запуска приложения необходимо клонировать репозиторий на локальный компьютер<br>
 в терминале, с помощью команды:<br>
-git clone https://github.com/OlgaZaglavnova/Test_EM2025.git
+git clone https://github.com/OlgaZaglavnova/Test_EM2025.git<br>
+и перейти в папку test1 с помощью команды:<br>
+cd test1
 
 ## API server
 Запустить в одном терминале имитацию бэка с помощью команды:<br>
