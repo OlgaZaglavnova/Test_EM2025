@@ -3,7 +3,7 @@
 Проект разработан на [Angular CLI](https://github.com/angular/angular-cli) версия 20.3.7.
 
 ## API server
-Запустить в одном терминале имитацию бэка с помощью команды:
+Запустить в одном терминале имитацию бэка с помощью команды:<br>
 npm run api
 
 ## Development server
