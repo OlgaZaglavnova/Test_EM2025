@@ -1,6 +1,10 @@
 # Приложение "Каталог фильмов" (тестовое задание)
 
-Проект разработан на [Angular CLI](https://github.com/angular/angular-cli) версия 20.3.7.
+Проект разработан на [Angular CLI](https://github.com/angular/angular-cli) версия 20.3.7.<br>
+
+Для запуска приложения необходимо клонировать репозиторий на локальный компьютер<br>
+в терминале, с помощью команды:<br>
+git clone https://github.com/OlgaZaglavnova/Test_EM2025.git
 
 ## API server
 Запустить в одном терминале имитацию бэка с помощью команды:<br>
